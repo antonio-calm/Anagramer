@@ -48,8 +48,9 @@ public class Anagramer {
 		builder.reverse();
 
 		for (int charIndex = 0; charIndex < word.length(); charIndex++) {
-			if (!Character.isLetter(chars[charIndex])) {
-				builder.insert(charIndex, chars[charIndex]);
+			char ch = chars[charIndex];
+			if (!Character.isLetter(ch)) {
+				builder.insert(charIndex, ch);
 			}
 		}
 
