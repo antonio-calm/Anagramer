@@ -6,19 +6,17 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 
 public class Anagramer {
-	public static void main(String[] args) {
-		try (InputStream inputStream = System.in;
-				Reader inputStreamReader = new InputStreamReader(inputStream);
-				BufferedReader reader = new BufferedReader(inputStreamReader)) {
+	public static void main(String[] args) throws IOException {
+		InputStream inputStream = System.in;
+		Reader inputStreamReader = new InputStreamReader(inputStream);
+		BufferedReader reader = new BufferedReader(inputStreamReader);
 
 			System.out.print("Enter text: ");
 			String text = reader.readLine();
 			String result = makeAnagramOfEachWord(text);
 			System.out.println(result);
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+
 	}
 
 	private static String makeAnagramOfEachWord(String text) {
