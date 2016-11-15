@@ -9,51 +9,53 @@ public class Anagramer {
 		Reader inputStreamReader = new InputStreamReader(System.in);
 		BufferedReader reader = new BufferedReader(inputStreamReader);
 
-			System.out.print("Enter text: ");
-			String text = reader.readLine();
-			String result = makeAnagramOfEachWord(text);
-			System.out.println(result);
+		System.out.print("Enter text: ");
+		String text = reader.readLine();
+
+		String anagram = getAnagram(text);
+
+		System.out.println(anagram);
 
 
 	}
 
-	private static String makeAnagramOfEachWord(String text) {
-		String delimiter = " ";
-		String separator = " ";
-		String[] words = text.split(delimiter);
+	private static String getAnagram(String text) {
+		String delimitingRegEx = " ";
+		String wordsSeparator = " ";
+		String[] words = text.split(delimitingRegEx);
 
-		StringBuilder builder = new StringBuilder();
+		StringBuilder anagramBuilder = new StringBuilder();
 
 		for (String word : words) {
-			String anagram = makeAnagramOfWord(word);
-			builder.append(anagram);
-			builder.append(separator);
+			String anagram = getAnagramFromWord(word);
+			anagramBuilder.append(anagram);
+			anagramBuilder.append(wordsSeparator);
 		}
 
-		builder.deleteCharAt(builder.length() - 1);
+		anagramBuilder.deleteCharAt(anagramBuilder.length() - 1);
 
-		return builder.toString();
+		return anagramBuilder.toString();
 	}
 
-	private static String makeAnagramOfWord(String word) {
+	private static String getAnagramFromWord(String word) {
 		char[] chars = word.toCharArray();
-		StringBuilder builder = new StringBuilder(word.length());
+		StringBuilder anagramBuilder = new StringBuilder(word.length());
 
 		for (char ch : chars) {
 			if (Character.isLetter(ch)) {
-				builder.append(ch);
+				anagramBuilder.append(ch);
 			}
 		}
 
-		builder.reverse();
+		anagramBuilder.reverse();
 
 		for (int charIndex = 0; charIndex < word.length(); charIndex++) {
 			char ch = chars[charIndex];
 			if (!Character.isLetter(ch)) {
-				builder.insert(charIndex, ch);
+				anagramBuilder.insert(charIndex, ch);
 			}
 		}
 
-		return builder.toString();
+		return anagramBuilder.toString();
 	}
 }
