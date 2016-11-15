@@ -21,19 +21,16 @@ public class Anagramer {
 		String delimiter = " ";
 		String separator = " ";
 		String[] words = text.split(delimiter);
-		int numberOfWords = words.length;
-		int lastWordIndex = numberOfWords - 1;
 
 		StringBuilder builder = new StringBuilder();
 
-		for (int wordIndex = 0; wordIndex < numberOfWords; wordIndex++) {
-			String anagram = makeAnagramOfWord(words[wordIndex]);
+		for (String word : words) {
+			String anagram = makeAnagramOfWord(word);
 			builder.append(anagram);
-
-			if (wordIndex != lastWordIndex) {
-				builder.append(separator);
-			}
+			builder.append(separator);
 		}
+
+		builder.deleteCharAt(builder.length() - 1);
 
 		return builder.toString();
 	}
