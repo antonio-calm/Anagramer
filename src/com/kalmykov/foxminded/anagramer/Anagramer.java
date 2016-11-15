@@ -36,9 +36,8 @@ public class Anagramer {
 	}
 
 	private static String makeAnagramOfWord(String word) {
-		int wordLength = word.length();
 		char[] chars = word.toCharArray();
-		StringBuilder builder = new StringBuilder(wordLength);
+		StringBuilder builder = new StringBuilder(word.length());
 
 		for (char ch : chars) {
 			if (Character.isLetter(ch)) {
@@ -48,7 +47,7 @@ public class Anagramer {
 
 		builder.reverse();
 
-		for (int charIndex = 0; charIndex < wordLength; charIndex++) {
+		for (int charIndex = 0; charIndex < word.length(); charIndex++) {
 			if (!Character.isLetter(chars[charIndex])) {
 				builder.insert(charIndex, chars[charIndex]);
 			}
