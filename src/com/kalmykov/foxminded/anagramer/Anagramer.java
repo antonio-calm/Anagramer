@@ -5,6 +5,9 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 
 public class Anagramer {
+	static final String DELIMITING_REG_EX = " ";
+	static final String WORDS_SEPARATOR = " ";
+
 	public static void main(String[] args) throws IOException {
 		Reader inputStreamReader = new InputStreamReader(System.in);
 		BufferedReader reader = new BufferedReader(inputStreamReader);
@@ -15,21 +18,17 @@ public class Anagramer {
 		String anagram = getAnagram(text);
 
 		System.out.println(anagram);
-
-
 	}
 
 	private static String getAnagram(String text) {
-		String delimitingRegEx = " ";
-		String wordsSeparator = " ";
-		String[] words = text.split(delimitingRegEx);
+		String[] words = text.split(Anagramer.DELIMITING_REG_EX);
 
 		StringBuilder anagramBuilder = new StringBuilder();
 
 		for (String word : words) {
 			String anagram = getAnagramFromWord(word);
 			anagramBuilder.append(anagram);
-			anagramBuilder.append(wordsSeparator);
+			anagramBuilder.append(Anagramer.WORDS_SEPARATOR);
 		}
 
 		anagramBuilder.deleteCharAt(anagramBuilder.length() - 1);
