@@ -1,12 +1,13 @@
 package com.kalmykov.foxminded.anagramer;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
 public class Anagramer {
-	static final String DELIMITING_REG_EX = " ";
-	static final String WORDS_SEPARATOR = " ";
+	private static final String DELIMITING_REGEXP = " ";
+	private static final char WORDS_SEPARATOR = ' ';
 
 	public static void main(String[] args) throws IOException {
 		Reader inputStreamReader = new InputStreamReader(System.in);
@@ -21,14 +22,14 @@ public class Anagramer {
 	}
 
 	private static String getAnagram(String text) {
-		String[] words = text.split(Anagramer.DELIMITING_REG_EX);
+		String[] words = text.split(DELIMITING_REGEXP);
 
 		StringBuilder anagramBuilder = new StringBuilder();
 
 		for (String word : words) {
 			String anagram = getAnagramFromWord(word);
 			anagramBuilder.append(anagram);
-			anagramBuilder.append(Anagramer.WORDS_SEPARATOR);
+			anagramBuilder.append(WORDS_SEPARATOR);
 		}
 
 		anagramBuilder.deleteCharAt(anagramBuilder.length() - 1);
@@ -38,7 +39,7 @@ public class Anagramer {
 
 	private static String getAnagramFromWord(String word) {
 		char[] chars = word.toCharArray();
-		StringBuilder anagramBuilder = new StringBuilder(word.length());
+		StringBuilder anagramBuilder = new StringBuilder();
 
 		for (char ch : chars) {
 			if (Character.isLetter(ch)) {
