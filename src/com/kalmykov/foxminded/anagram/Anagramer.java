@@ -1,4 +1,4 @@
-package com.kalmykov.foxminded.anagramer;
+package com.kalmykov.foxminded.anagram;
 
 import java.io.BufferedReader;
 import java.io.IOException;
